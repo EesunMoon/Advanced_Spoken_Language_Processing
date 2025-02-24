@@ -1,12 +1,17 @@
 # **HW1 - Speech Feature Extraction & Manipulation**
 
 ## **Description**
-This project extracts speech features from given `.wav` files and approximates the speaking rate using transcripts. Additionally, the **Neutral.wav** file is manipulated to sound more like **Happy.wav** by adjusting pitch and duration.
+This project extracts speech features from two sets of `.wav` recordings:
+1. **Eesun_recordings/**: These are self-recorded speech samples using Praat. The transcript for these recordings is:
+    > "Oh my gosh, I can’t believe this happened. What am I supposed to do now?"
+2. **MSP_samples/**: These are given recordings provided in the dataset.
+
+Additionally, the Neutral.wav file from `Eesun_recordings` is manipulated to sound more like Happy.wav by adjusting pitch and duration.
 
 ## **File Structure**
 ```
 HW1/
-│── Eesun_recordings/               # Provided speech recordings
+│── Eesun_recordings/               # Self-recorded speech samples
 │   │── Afraid.wav
 │   │── Angry.wav
 │   │── Disgusted.wav
@@ -24,7 +29,7 @@ HW1/
 │── requirements.txt               # Required Python packages
 │
 └── Note: MSP_samples directory is not included in the submission.
-If you want to extract features from the MSP_samples dataset, place the MSP_samples directory inside HW1.
+        If you want to extract features from the MSP_samples dataset, place the MSP_samples directory inside HW1.
 ```
 
 ## **How to Run**
