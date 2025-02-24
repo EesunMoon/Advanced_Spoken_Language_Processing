@@ -41,25 +41,25 @@ pip install -r requirements.txt
 ### **2. Handle the MSP samples directory**
 - If you want to execute features from the **MSP_samples dataset**, add the `MSP_samples/` directory inside `HW1`.
 - Otherwise, modify `feature_extraction.py' by removing:
-    ```
+    ``` python
     file_dirs = ['HW1/MSP_samples/','HW1/Eesun_recordings/']
     output_names = ['HW1/msp_features.csv','HW1/my_features.csv']
     ```
-    and keey only:
-    ```
+    and keep only:
+    ``` python
     file_dirs = ['HW1/Eesun_recordings/']
     output_names = ['HW1/my_features.csv']
     ```
 ### **3. Run feature extraction & manipulation script**
 ```sh
-python3 feature_extraction.py
+python feature_extraction.py
 ```
 
 ### **4. Expected output**
-- `myfeatures.csv`: Extracted features from `Eesun_recordings/`
+- `my_features.csv`: Extracted features from `Eesun_recordings/`
+- `msp_features.csv`: Extracted features from `MSP_samples/`
 - `bonus.wav`: Neutral speech transformed into Happy speech
-
-
+- `bonus.Manipulation`: Manipulation object for pitch & duration changes
 
 ## **Feature Extraction Details**
 The script extracts the following speech features using **Praat (parselmouth)**:
@@ -69,13 +69,14 @@ The script extracts the following speech features using **Praat (parselmouth)**:
 - Jitter & Shimmer: Measures of voice perturbation.
 - HNR (Harmonics-to-Noise Ratio): Extracted using `To Harmonicity (cc)`.
 
+### Speeking Rate Calculation
 Speaking rate is estimated using:
-```sh
+```python
 word_count = len(transcript.split())
 speaking_rate = word_count / duration
 ```
 Since background noise can interfere with transcription, noise reduction is applied before speech recognition:
-```sh
+```python
 speech_to_text.adjust_for_ambient_noise(source, duration=0.3)
 ```
 
@@ -84,7 +85,7 @@ speech_to_text.adjust_for_ambient_noise(source, duration=0.3)
   - Pitch: Increased by 1.5x and shifted +30 Hz.
   - Speaking Rate: Increased by 1.1x (duration scaled to 0.91).
 
-The manipulated speech file is saved as `bonus.wav`.
+The manipulated speech file is saved as `bonus.wav` and `bonus.Manipulation`.
 
 
 ## **Additional Notes**
