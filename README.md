@@ -98,3 +98,5 @@ The manipulated speech file is saved as `bonus.wav` and `bonus.Manipulation`.
 - Parselmouth Library Documentation (PDF): Parselmouth Docs [PDF](https://parselmouth.readthedocs.io/_/downloads/en/stable/pdf/)
 - MSP-Podcast Dataset: [MSP-Podcast Speech Corpus](https://ecs.utdallas.edu/research/researchlabs/msp-lab/MSP-Podcast.html)
 - Praat Manual
+- Mel-frequency-cepstral-coefficient: [MFCC Paper](https://www.sciencedirect.com/topics/computer-science/mel-frequency-cepstral-coefficient)
+- Formant Frequencies: [Formant](https://www.sciencedirect.com/topics/medicine-and-dentistry/formant)
