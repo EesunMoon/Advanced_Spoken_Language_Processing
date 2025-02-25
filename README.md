@@ -92,3 +92,9 @@ The manipulated speech file is saved as `bonus.wav` and `bonus.Manipulation`.
 - `MSP_samples/` directory is referenced in the script but is NOT included in the submission, as per the assignment instructions.
 - The script will still run correctly using `Eesun_recordings/`.
 - If you want to include `MSP_samples`, make sure to place it in `HW1/`. Otherwise, remove related references in `feature_extraction.py`.
+
+## **References**
+- Parselmouth Praat API Documentation: (Parselmouth Praat Call)[https://parselmouth.readthedocs.io/en/latest/api/parselmouth.praat.call.html]
+- Parselmouth Library Documentation (PDF): Parselmouth Docs (PDF)[https://parselmouth.readthedocs.io/_/downloads/en/stable/pdf/]
+- MSP-Podcast Dataset: (MSP-Podcast Speech Corpus)[https://ecs.utdallas.edu/research/researchlabs/msp-lab/MSP-Podcast.html)
+- Praat Manual
