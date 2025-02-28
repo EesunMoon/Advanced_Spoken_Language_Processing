@@ -1,0 +1,155 @@
+Speech File,Min Pitch,Max Pitch,Mean Pitch,Sd Pitch,Min Intensity,Max Intensity,Mean Intensity,Sd Intensity,Speaking Rate,Jitter,Shimmer,HNR
+HW1/Eesun_recordings/Neutral.wav,84.04588620822074,386.4590057052525,245.69616864901732,50.12419064253503,11.947797789679178,76.77174429974724,68.40760358042434,16.983900144080636,2.472952086553323,0.012778616158996236,0.04946199861968649,"Object type: Harmonicity
+Object name: untitled
+Date: Mon Feb 24 19:56:56 2025
+
+Time domain:
+   Start time: 0 seconds
+   End time: 6.065625 seconds
+   Total duration: 6.065625 seconds
+Time sampling:
+   Number of frames: 604 (354 sounding)
+   Time step: 0.01 seconds
+   First frame centred at: 0.017812499999999894 seconds
+Periodicity-to-noise ratios of sounding frames:
+   Median 20.081055 dB
+   10 % = 8.72580685 dB   90 %% = 25.502303 dB
+   16 % = 12.5055677 dB   84 %% = 24.384686 dB
+   25 % = 16.0464386 dB   75 %% = 22.7479981 dB
+Minimum: -2.11334781 dB
+Maximum: 36.3052443 dB
+Average: 18.7865767 dB
+Standard deviation: 6.93704731 dB
+"
+HW1/Eesun_recordings/Happy.wav,84.7815136180926,625.0609964608564,375.50982656745083,104.49696551455645,11.959356864378295,77.36722353756782,70.1388260111222,15.09352573392668,2.6317520889532204,0.01960747629897344,0.0702676934947578,"Object type: Harmonicity
+Object name: untitled
+Date: Mon Feb 24 19:56:56 2025
+
+Time domain:
+   Start time: 0 seconds
+   End time: 5.699625 seconds
+   Total duration: 5.699625 seconds
+Time sampling:
+   Number of frames: 568 (313 sounding)
+   Time step: 0.01 seconds
+   First frame centred at: 0.014812500000000225 seconds
+Periodicity-to-noise ratios of sounding frames:
+   Median 15.226873 dB
+   10 % = 4.8946502 dB   90 %% = 25.1145473 dB
+   16 % = 8.05551008 dB   84 %% = 20.6652768 dB
+   25 % = 10.6342629 dB   75 %% = 18.9630858 dB
+Minimum: -3.99642479 dB
+Maximum: 37.405385 dB
+Average: 14.9878921 dB
+Standard deviation: 7.38064381 dB
+"
+HW1/Eesun_recordings/Sad.wav,77.3149817170399,553.4833188742673,312.80101879637317,75.52716682755303,19.711109843466293,76.65269372522576,68.95898727107277,14.3323835823838,2.1619868659297894,0.0185216721934271,0.05537279580151202,"Object type: Harmonicity
+Object name: untitled
+Date: Mon Feb 24 19:56:56 2025
+
+Time domain:
+   Start time: 0 seconds
+   End time: 6.9380625 seconds
+   Total duration: 6.9380625 seconds
+Time sampling:
+   Number of frames: 692 (391 sounding)
+   Time step: 0.01 seconds
+   First frame centred at: 0.014031250000000047 seconds
+Periodicity-to-noise ratios of sounding frames:
+   Median 19.6969297 dB
+   10 % = 8.41996853 dB   90 %% = 25.3618321 dB
+   16 % = 11.1079936 dB   84 %% = 24.2759451 dB
+   25 % = 15.2419594 dB   75 %% = 23.210653 dB
+Minimum: -3.53329524 dB
+Maximum: 37.0076217 dB
+Average: 18.3586859 dB
+Standard deviation: 6.82857429 dB
+"
+HW1/Eesun_recordings/Surprised.wav,175.66474341917862,625.1256297862748,377.9990250629702,96.9768942373841,2.021984729635024,76.80051840039505,69.70787793632661,18.52787948298748,2.460604693603453,0.019230456029030722,0.08087928676918042,"Object type: Harmonicity
+Object name: untitled
+Date: Mon Feb 24 19:56:56 2025
+
+Time domain:
+   Start time: 0 seconds
+   End time: 6.0960625 seconds
+   Total duration: 6.0960625 seconds
+Time sampling:
+   Number of frames: 607 (334 sounding)
+   Time step: 0.01 seconds
+   First frame centred at: 0.01803125000000005 seconds
+Periodicity-to-noise ratios of sounding frames:
+   Median 13.9723845 dB
+   10 % = 5.39977479 dB   90 %% = 23.6756661 dB
+   16 % = 7.57281684 dB   84 %% = 22.1814203 dB
+   25 % = 9.23047618 dB   75 %% = 20.2660715 dB
+Minimum: -2.22183899 dB
+Maximum: 33.7450694 dB
+Average: 14.5886321 dB
+Standard deviation: 7.28882498 dB
+"
+HW1/Eesun_recordings/Afraid.wav,151.4430021414433,599.7611255486787,302.7491573039569,49.77548989498429,20.333338850515197,76.66776077607777,68.47647780283337,16.622049367372792,2.271690076568125,0.014464485291133788,0.06471056905051549,"Object type: Harmonicity
+Object name: untitled
+Date: Mon Feb 24 19:56:56 2025
+
+Time domain:
+   Start time: 0 seconds
+   End time: 6.1628125 seconds
+   Total duration: 6.1628125 seconds
+Time sampling:
+   Number of frames: 614 (331 sounding)
+   Time step: 0.01 seconds
+   First frame centred at: 0.01640624999999984 seconds
+Periodicity-to-noise ratios of sounding frames:
+   Median 18.0114967 dB
+   10 % = 6.88587536 dB   90 %% = 26.8745036 dB
+   16 % = 9.3543123 dB   84 %% = 24.4875136 dB
+   25 % = 12.3027753 dB   75 %% = 22.5061677 dB
+Minimum: -3.30122013 dB
+Maximum: 36.8565918 dB
+Average: 17.4227751 dB
+Standard deviation: 7.95249054 dB
+"
+HW1/Eesun_recordings/Disgusted.wav,150.21437331422962,464.2805393540835,282.58370902709925,57.12854460518643,6.553795001072236,76.51817014359504,68.44586457826709,18.10735536823765,2.414261386906943,0.021161071336878765,0.09849285862894218,"Object type: Harmonicity
+Object name: untitled
+Date: Mon Feb 24 19:56:56 2025
+
+Time domain:
+   Start time: 0 seconds
+   End time: 5.798875 seconds
+   Total duration: 5.798875 seconds
+Time sampling:
+   Number of frames: 578 (297 sounding)
+   Time step: 0.01 seconds
+   First frame centred at: 0.014437499999999766 seconds
+Periodicity-to-noise ratios of sounding frames:
+   Median 11.4324023 dB
+   10 % = 1.7448559 dB   90 %% = 22.2061188 dB
+   16 % = 3.33445813 dB   84 %% = 19.7240311 dB
+   25 % = 5.45807046 dB   75 %% = 16.9037284 dB
+Minimum: -3.19296721 dB
+Maximum: 34.0174641 dB
+Average: 11.5766772 dB
+Standard deviation: 7.6991119 dB
+"
+HW1/Eesun_recordings/Angry.wav,173.3393184859791,568.881874740291,311.75348366221493,87.02401319715469,8.504562248930617,77.16860128571405,69.49140339075234,16.731317792109042,2.5939366730268,0.0202023636836362,0.08745587086556167,"Object type: Harmonicity
+Object name: untitled
+Date: Mon Feb 24 19:56:56 2025
+
+Time domain:
+   Start time: 0 seconds
+   End time: 5.0116875 seconds
+   Total duration: 5.0116875 seconds
+Time sampling:
+   Number of frames: 499 (289 sounding)
+   Time step: 0.01 seconds
+   First frame centred at: 0.01584374999999982 seconds
+Periodicity-to-noise ratios of sounding frames:
+   Median 12.6282346 dB
+   10 % = 3.18188907 dB   90 %% = 22.0236453 dB
+   16 % = 5.52098396 dB   84 %% = 20.2440539 dB
+   25 % = 7.34574495 dB   75 %% = 18.3569565 dB
+Minimum: -1.62438534 dB
+Maximum: 38.3053272 dB
+Average: 12.8845448 dB
+Standard deviation: 7.48112283 dB
+"
