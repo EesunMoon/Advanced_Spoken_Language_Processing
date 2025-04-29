@@ -7,7 +7,7 @@ parent_directory/
 │   │── Feature_Extraction_Analysis.ipynb          # Task1: Feature Analysis using Praat and Parselmouth
 │   │── Classification.ipynb                       # Task2: Classification Experiments using openSMILE toolkit
 │   │── response_em3907.pdf                        # Report with my responses to the questions
-│   │── README.md                                  # explanation of my code
+│   │── README.md                                  # Explanation of the code
 │
 │── opensmile/                                     # openSMILE toolkit directory
 │── features/                                      # extracted openSMILE features
@@ -37,7 +37,7 @@ parent_directory/
 - **Settings**:
   - Pitch analysis range: 75–600 Hz (autocorrelation method)
   - Intensity analysis: pitch floor set to 75 Hz, and only channel 1 (left channel) was used.
-- **Z-score Normalization across the individual speaker**:
+- **Z-score Normalization across individual speakers**:
   - Speaker-wise z-score normalization was applied across all samples for each speaker.
       - 1. Extract raw pitch values for all speech segments from speaker X. This would result in one array of pitch/frequency values for each segment.
         2. Concatenate all pitch arrays from speaker X and calculate an overall mean pitch (𝜇𝑋) and pitch std (𝜎𝑋) of speaker X.
@@ -51,7 +51,7 @@ parent_directory/
 - **Execution**:
   - Feature extraction performed **via terminal** using:
     1. Create a `features/` folder in the parent directory.
-    2. Install and build opensmile toolkit by executing the following below commands from the parent directory:
+    2. Install and build the opensmile toolkit by executing the following commands from the parent directory:
     ```sh
     git clone https://github.com/audeering/opensmile.git
     cd opensmile/
@@ -77,7 +77,7 @@ parent_directory/
     - Source features:
         - 384 openSMILE features
         - Additional features:
-            - Speech-based featues:
+            - Speech-based features:
                 - four normalized features from task 1 (`pitch_min_norm`, `pitch_max_norm`, `pitch_mean_norm`, `intensity_mean_norm`)
                 - Additional extracted feature using Parselmouth and SpeechRecognition: `jitter`, `shimmer`, `HNR`, `ASR confidence score`
             - Text-based features:
