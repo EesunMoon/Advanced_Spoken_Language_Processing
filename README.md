@@ -39,10 +39,10 @@ parent_directory/
   - Intensity analysis: pitch floor set to 75 Hz, and only channel 1 (left channel) was used.
 - **Z-score Normalization across individual speakers**:
   - Speaker-wise z-score normalization was applied across all samples for each speaker.
-      - 1. Extract raw pitch values for all speech segments from speaker X. This would result in one array of pitch/frequency values for each segment.
-        2. Concatenate all pitch arrays from speaker X and calculate an overall mean pitch (𝜇𝑋) and pitch std (𝜎𝑋) of speaker X.
-        3. Normalize each extracted pitch array – for each value 𝒙 in an array, calculate the normalized 𝒙 as (𝒙 - 𝜇𝑋) / 𝜎𝑋.
-        4. Finally, calculate the min, max, and mean of pitch for each segment using the normalized pitch array.
+      - 1. Extract raw feature values for all speech segments from speaker X.
+        2. Concatenate all feature arrays from speaker X and calculate an overall mean (𝜇𝑋) and std (𝜎𝑋) of speaker X.
+        3. Normalize each extracted feature array – for each value 𝒙 in an array, calculate the normalized 𝒙 as (𝒙 - 𝜇𝑋) / 𝜎𝑋.
+        4. Finally, calculate the min, max, and mean of feature for each segment using the normalized feature array.
         5. *Note: obtain an overall pitch/intensity mean and std value for **each speaker instead of each feature**, in order to normalize by the speaker.
 
 ### 2. openSMILE-based Extraction
@@ -115,6 +115,6 @@ parent_directory/
 
 ## Special Notes
 - **openSMILE feature extraction was performed outside Jupyter notebooks, using terminal commands.**
-- **Ensure that the input and output paths are correctly configured when running openSMILE manually. In particular, both the hw3_speech_files/ and features/ directories must exist in the parent directory of the em3907/ folder for the classification.ipynb script to function properly.**
+- **Ensure that the input and output paths are correctly configured when running openSMILE manually. In particular, both the `hw3_speech_files/` and `features/` directories must exist in the parent directory of the `em3907/` folder for the `classification.ipynb` script to function properly.**
 - The final report (`response_em3907.pdf`) provides a complete summary of feature analysis, classification experiments, and improvement ideas based on the results.
 
