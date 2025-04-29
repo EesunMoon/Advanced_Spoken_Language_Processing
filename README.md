@@ -70,7 +70,7 @@ parent_directory/
   - Speaker-wise z-score normalization was applied before classification.
       - Unlike the feature analysis using Praat, openSMILE features provided precomputed statistical values. Thus, instead of aggregating and filtering raw feature arrays, mean and standard deviation were calculated directly from statistical values for each speaker.
       - 1. Compute the overall mean (𝜇𝑋) and standard deviation (𝜎𝑋) of each feature for speaker X.
-        2. Normalize each feautre value 𝒙, using the formula: z = (𝒙 - 𝜇𝑋) / 𝜎𝑋.
+        2. Normalize each feature value 𝒙, using the formula: z = (𝒙 - 𝜇𝑋) / 𝜎𝑋.
         3. Perform this normalization for all feature columns.
 
 
