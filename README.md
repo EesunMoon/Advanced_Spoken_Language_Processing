@@ -32,8 +32,8 @@ parent_directory/
 ### 1. Parselmouth-based Extraction
 - **Tool**: Parselmouth (Python interface for Praat)
 - **Extracted Features**: 
-  - Pitch (pitch array, min, max, mean)
-  - Intensity (intensity array, min, max, mean)
+  - Pitch (pitch array): min, max, mean pitch were extracted from the raw pitch array
+  - Intensity (intensity array): min, max, mean intensity were also extracted from the raw pitch array
 - **Settings**:
   - Pitch analysis range: 75–600 Hz (autocorrelation method)
   - Intensity analysis: pitch floor set to 75 Hz, and only channel 1 (left channel) was used.
