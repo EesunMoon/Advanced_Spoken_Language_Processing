@@ -69,6 +69,8 @@ parent_directory/
 - **Normalization**:
   - Speaker-wise z-score normalization applied before classification.
       - Unlike the feature analysis using Praat, openSMILE features provided statistical values directly. Thus, instead of aggregating and filtering raw pitch arrays, mean and standard deviation were computed based on available statistical values for each speaker.
+      - 1. calculate an overall mean feature (𝜇𝑋) and feature std (𝜎𝑋) of speaker X.
+        2. Normalize feautres – for each value 𝒙, calculate the normalized 𝒙 as (𝒙 - 𝜇𝑋) / 𝜎𝑋.
 
 
 ## Classification Experiments
@@ -112,6 +114,6 @@ parent_directory/
 
 ## Special Notes
 - **openSMILE feature extraction was performed outside Jupyter notebooks, using terminal commands.**
-- **Ensure that input and output paths are correctly configured when running openSMILE manually.**
+- **Ensure that the input and output paths are correctly configured when running openSMILE manually. In particular, both the hw3_speech_files/ and features/ directories must exist in the parent directory of the em3907/ folder for the classification.ipynb script to function properly.**
 - The final report (`response_em3907.pdf`) provides a complete summary of feature analysis, classification experiments, and improvement ideas based on the results.
 
