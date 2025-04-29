@@ -31,12 +31,15 @@ parent_directory/
 
 ### 1. Parselmouth-based Extraction
 - **Tool**: Parselmouth (Python interface for Praat)
+  
 - **Extracted Features**: 
-  - Pitch (pitch array): min, max, mean pitch were extracted from the raw pitch array
-  - Intensity (intensity array): min, max, mean intensity were also extracted from the raw pitch array
+  - Pitch (raw pitch array): min, max, and mean pitch were extracted from the raw pitch array, after excluding zero and NaN values.
+  - Intensity (raw intensity array): min, max, and mean intensity were also extracted from the raw intensity array, excluding zero and NaN values.
+  
 - **Settings**:
   - Pitch analysis range: 75–600 Hz (autocorrelation method)
   - Intensity analysis: pitch floor set to 75 Hz, and only channel 1 (left channel) was used.
+  
 - **Z-score Normalization across individual speakers**:
   - Speaker-wise z-score normalization was applied across all samples for each speaker.
       - 1. Extract raw feature values for all speech segments from speaker X.
@@ -44,6 +47,7 @@ parent_directory/
         3. Normalize each extracted feature array – for each value 𝒙 in an array, calculate the normalized 𝒙 as (𝒙 - 𝜇𝑋) / 𝜎𝑋.
         4. Finally, calculate the min, max, and mean of feature for each segment using the normalized feature array.
         5. *Note: obtain an overall pitch/intensity mean and std value for **each speaker instead of each feature**, in order to normalize by the speaker.
+
 
 ### 2. openSMILE-based Extraction
 - **Tool**: openSMILE toolkit
@@ -65,7 +69,6 @@ parent_directory/
     ```
     The extracted feature files will be saved in the `features/` directory.
 
-    
 - **Normalization**:
   - Speaker-wise z-score normalization was applied before classification.
       - Unlike the feature analysis using Praat, openSMILE features provided precomputed statistical values. Thus, instead of aggregating and filtering raw feature arrays, mean and standard deviation were calculated directly from statistical values for each speaker.
@@ -89,7 +92,9 @@ parent_directory/
                   
 - **Classifier**: Support Vector Machine (SVM) with:
     - C=1.0, gamma="scale", kernel="rbf", random_state = 42, class_weight="balanced"
+    
 - **Validation**: Leave-One-Speaker-Out Cross-Validation
+
 - **Evaluation Metrics**:
   - Per-speaker classification report (precision, recall, F1, support)
   - Aggregated accuracy and weighted F1 score across all speakers.
