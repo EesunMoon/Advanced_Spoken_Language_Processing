@@ -1,102 +1,117 @@
-# **HW1 - Speech Feature Extraction & Manipulation**
-
-## **Description**
-This project extracts speech features from two sets of `.wav` recordings:
-1. **Eesun_recordings/**: These are self-recorded speech samples using Praat. The transcript for these recordings is:
-    > "Oh my gosh, I can’t believe this happened. What am I supposed to do now?"
-2. **MSP_samples/**: These are given recordings provided in the dataset.
-
-Additionally, the Neutral.wav file from `Eesun_recordings` is manipulated to sound more like Happy.wav by adjusting pitch and duration.
+# **HW3 - Emotion Recognition**
 
 ## **File Structure**
 ```
-HW1/
-│── Eesun_recordings/               # Self-recorded speech samples
-│   │── Afraid.wav
-│   │── Angry.wav
-│   │── Disgusted.wav
-│   │── Happy.wav
-│   │── Neutral.wav
-│   │── Sad.wav
-│   │── Surprised.wav
+parent_directory/
+│── em3907/
+│   │── Feature_Extraction_Analysis.ipynb          # Task1: Feature Analysis using Praat and Parselmouth
+│   │── Classification.ipynb                       # Task2: Classification Experiments using openSMILE toolkit
+│   │── response_em3907.pdf                        # Report with my responses to the questions
+│   │── README.md                                  # explanation of my code
 │
-│── feature_extraction.py          # Main feature extraction & manipulation script
-│── bonus.wav                      # Manipulated “Neutral.wav” (transformed to “Happy.wav”)
-│── bonus.Manipulation             # Manipulation object for pitch & duration changes
-│── HW1_response.docx              # Report including method explanations
-│── msp_features.csv               # Extracted features from “MSP_samples”
-│── my_features.csv                # Extracted features from “Eesun_recordings”
-│── requirements.txt               # Required Python packages
+│── opensmile/                                     # openSMILE toolkit directory
+│── features/                                      # extracted openSMILE features
+│── hw3_speech_files/                              # provided .wav file directory
 │
-└── Note: MSP_samples directory is not included in the submission.
-        If you want to extract features from the MSP_samples dataset, place the MSP_samples directory inside HW1.
+└── Note: Only the em3907 directory is included in the submission.
 ```
 
-## **How to Run**
-### **1. Install required dependencies**
-```sh
-pip install -r requirements.txt
-```
+## **Detail description of each file**
+- `Feature_Extraction_Analysis.ipynb`  
+  Scripts for feature extraction using Parselmouth and feature analysis.
+- `Classification.ipynb`  
+  Scripts for feature extraction using openSMILE toolkit and classification experiments using extracted features and leave-one-speaker-out cross-validation.
+- `response_em3907.pdf`  
+  Final report containing answers to feature analysis, classification experiments, and error analysis.
+- `README.md`  
+  This file. Documentation for code structure, feature extraction method, classification method, and execution instructions.
 
-### **2. Handle the MSP samples directory**
-- If you want to execute features from the **MSP_samples dataset**, add the `MSP_samples/` directory inside `HW1`.
-- Otherwise, modify `feature_extraction.py' by removing:
-    ``` python
-    file_dirs = ['HW1/MSP_samples/','HW1/Eesun_recordings/']
-    output_names = ['HW1/msp_features.csv','HW1/my_features.csv']
+
+## Feature Extraction
+
+### 1. Parselmouth-based Extraction
+- **Tool**: Parselmouth (Python interface for Praat)
+- **Extracted Features**: 
+  - Pitch (pitch array, min, max, mean)
+  - Intensity (intensity array, min, max, mean)
+- **Settings**:
+  - Pitch analysis range: 75–600 Hz (autocorrelation method)
+  - Intensity analysis: pitch floor set to 75 Hz, and only channel 1 (left channel) was used.
+- **Z-score Normalization across the individual speaker**:
+  - Speaker-wise z-score normalization was applied across all samples for each speaker.
+      - 1. Extract raw pitch values for all speech segments from speaker X. This would result in one array of pitch/frequency values for each segment.
+        2. Concatenate all pitch arrays from speaker X and calculate an overall mean pitch (𝜇𝑋) and pitch std (𝜎𝑋) of speaker X.
+        3. Normalize each extracted pitch array – for each value 𝒙 in an array, calculate the normalized 𝒙 as (𝒙 - 𝜇𝑋) / 𝜎𝑋.
+        4. Finally, calculate the min, max, and mean of pitch for each segment using the normalized pitch array.
+        5. *Note: obtain an overall pitch/intensity mean and std value for **each speaker instead of each feature**, in order to normalize by the speaker.
+
+### 2. openSMILE-based Extraction
+- **Tool**: openSMILE toolkit
+- **Configuration**: IS09_emotion.conf (INTERSPEECH 2009 Emotion Challenge feature set)
+- **Execution**:
+  - Feature extraction performed **via terminal** using:
+    1. Create a `features/` folder in the parent directory.
+    2. Install and build opensmile toolkit by executing the following below commands from the parent directory:
+    ```sh
+    git clone https://github.com/audeering/opensmile.git
+    cd opensmile/
+    bash build.sh
     ```
-    and keep only:
-    ``` python
-    file_dirs = ['HW1/Eesun_recordings/']
-    output_names = ['HW1/my_features.csv']
+    The `opensmile` directory will be created in the parent folder.
+    
+    3. Extract openSMILE features by running:
+    ```sh
+    find ../hw3_speech_files/ -type f -name "*.wav" -exec sh -c 'for file; do base=$(basename "$file" ".wav"); ./build/progsrc/smilextract/SMILExtract -l 1 -C ./config/is09-13/IS09_emotion.conf -I $file -csvoutput "../features/${base}.csv"; done' sh {} +
     ```
-### **3. Run feature extraction & manipulation script**
-```sh
-python feature_extraction.py
-```
+    The extracted feature files will be saved in the `features/` directory.
 
-### **4. Expected output**
-- `my_features.csv`: Extracted features from `Eesun_recordings/`
-- `msp_features.csv`: Extracted features from `MSP_samples/`
-- `bonus.wav`: Neutral speech transformed into Happy speech
-- `bonus.Manipulation`: Manipulation object for pitch & duration changes
-
-## **Feature Extraction Details**
-The script extracts the following speech features using **Praat (parselmouth)**:
-- Pitch: Minimum, Maximum, Mean, Standard Deviation
-- Intensity: Minimum, Maximum, Mean (energy-averaged), Standard Deviation
-- Speaking Rate: Approximated as #words/duration, using Google Speech-to-Text for transcription.
-- Jitter & Shimmer: Measures of voice perturbation.
-- HNR (Harmonics-to-Noise Ratio): Extracted using `To Harmonicity (cc)`.
-
-### Speeking Rate Calculation
-Speaking rate is estimated using:
-```python
-word_count = len(transcript.split())
-speaking_rate = word_count / duration
-```
-Since background noise can interfere with transcription, noise reduction is applied before speech recognition:
-```python
-speech_to_text.adjust_for_ambient_noise(source, duration=0.3)
-```
-
-## **Speech Manipulation (Bonus)**
-- `Eesun_recordings/Neutral.wav`: transformed into Happy speech by adjusting:
-  - Pitch: Increased by 1.5x and shifted +30 Hz.
-  - Speaking Rate: Increased by 1.1x (duration scaled to 0.91).
-
-The manipulated speech file is saved as `bonus.wav` and `bonus.Manipulation`.
+    
+- **Normalization**:
+  - Speaker-wise z-score normalization applied before classification.
+      - Unlike the feature analysis using Praat, openSMILE features provided statistical values directly. Thus, instead of aggregating and filtering raw pitch arrays, mean and standard deviation were computed based on available statistical values for each speaker.
 
 
-## **Additional Notes**
-- `MSP_samples/` directory is referenced in the script but is NOT included in the submission, as per the assignment instructions.
-- The script will still run correctly using `Eesun_recordings/`.
-- If you want to include `MSP_samples`, make sure to place it in `HW1/`. Otherwise, remove related references in `feature_extraction.py`.
+## Classification Experiments
+- **Features**:
+    - 180 total features selected using Random Forest feature importance.
+    - Source features:
+        - 384 openSMILE features
+        - Additional features:
+            - Speech-based featues:
+                - four normalized features from task 1 (`pitch_min_norm`, `pitch_max_norm`, `pitch_mean_norm`, `intensity_mean_norm`)
+                - Additional extracted feature using Parselmouth and SpeechRecognition: `jitter`, `shimmer`, `HNR`, `ASR confidence score`
+            - Text-based features:
+                - `content_ratio = word_count / content_length`
+                - `pitch_variation = pitch_mean_norm x word_counts`
+                  
+- **Classifier**: Support Vector Machine (SVM) with:
+    - C=1.0, gamma="scale", kernel="rbf", random_state = 42, class_weight="balanced"
+- **Validation**: Leave-One-Speaker-Out Cross-Validation
+- **Evaluation Metrics**:
+  - Per-speaker classification report (precision, recall, F1, support)
+  - Aggregated accuracy and weighted F1 score across all speakers.
 
-## **References**
-- Parselmouth Praat API Documentation: [Parselmouth Praat Call](https://parselmouth.readthedocs.io/en/latest/api/parselmouth.praat.call.html)
-- Parselmouth Library Documentation (PDF): Parselmouth Docs [PDF](https://parselmouth.readthedocs.io/_/downloads/en/stable/pdf/)
-- MSP-Podcast Dataset: [MSP-Podcast Speech Corpus](https://ecs.utdallas.edu/research/researchlabs/msp-lab/MSP-Podcast.html)
-- Praat Manual
-- Mel-frequency-cepstral-coefficient: [MFCC Paper](https://www.sciencedirect.com/topics/computer-science/mel-frequency-cepstral-coefficient)
-- Formant Frequencies: [Formant](https://www.sciencedirect.com/topics/medicine-and-dentistry/formant)
+## How to Run
+1. **Feature Extraction and Analysis**
+   - Open `Feature_Extraction_Analysis.ipynb`
+   - Execute all cells to reproduce feature extraction, normalization, and visualization.
+   - Ensure Parselmouth is installed.
+   - If Parselmouth is not installed, install it using:
+     ```sh
+     pip install praat-parselmouth
+     ```
+    
+2. **Classification**
+   - Open `Classification.ipynb`
+   - Ensure openSMILE feature files are extracted and available under the `features/` directory.
+   - Execute all cells to reproduce classification and evaluation.
+
+3. **Directory Structure Requirements**
+   - `hw3_speech_files/`, `features/`, and `opensmile/` directories must be located in the **parent folder** of `em3907/`.
+
+
+## Special Notes
+- **openSMILE feature extraction was performed outside Jupyter notebooks, using terminal commands.**
+- **Ensure that input and output paths are correctly configured when running openSMILE manually.**
+- The final report (`response_em3907.pdf`) provides a complete summary of feature analysis, classification experiments, and improvement ideas based on the results.
+
